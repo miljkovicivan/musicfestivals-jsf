@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 28, 2017 8:06:00 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="database_stuff.Festivaldayperformer" table="festivaldayperformer" catalog="pia" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="festivalday" class="database_stuff.Festivalday" fetch="select">
+            <column name="festivalday_fk" />
+        </many-to-one>
+        <many-to-one name="performer" class="database_stuff.Performer" fetch="select">
+            <column name="performer_fk" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

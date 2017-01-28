@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 28, 2017 8:06:00 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="database_stuff.User" table="user" catalog="pia" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="firstName" type="string">
+            <column name="first_name" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="last_name" />
+        </property>
+        <property name="username" type="string">
+            <column name="username" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" />
+        </property>
+        <property name="password" type="binary">
+            <column name="password" />
+        </property>
+        <property name="phoneNumber" type="string">
+            <column name="phone_number" />
+        </property>
+        <property name="reservationsBanned" type="java.lang.Boolean">
+            <column name="reservations_banned" />
+        </property>
+        <property name="lastLoginDatetime" type="timestamp">
+            <column name="last_login_datetime" length="19" />
+        </property>
+        <set name="feedbacks" table="feedback" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="user_fk" />
+            </key>
+            <one-to-many class="database_stuff.Feedback" />
+        </set>
+        <set name="registrations" table="registration" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="user_fk" />
+            </key>
+            <one-to-many class="database_stuff.Registration" />
+        </set>
+        <set name="ticketreservations" table="ticketreservation" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="user_fk" />
+            </key>
+            <one-to-many class="database_stuff.Ticketreservation" />
+        </set>
+        <set name="notifications" table="notification" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="user_fk" />
+            </key>
+            <one-to-many class="database_stuff.Notification" />
+        </set>
+        <set name="ratingsForFestivalFk" table="rating" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="festival_fk" />
+            </key>
+            <one-to-many class="database_stuff.Rating" />
+        </set>
+        <set name="ratingsForUserFk" table="rating" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="user_fk" />
+            </key>
+            <one-to-many class="database_stuff.Rating" />
+        </set>
+        <set name="admins" table="admin" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="user_fk" />
+            </key>
+            <one-to-many class="database_stuff.Admin" />
+        </set>
+    </class>
+</hibernate-mapping>

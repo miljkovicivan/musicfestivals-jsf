@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 28, 2017 8:06:00 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="database_stuff.Festival" table="festival" catalog="pia" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="location" class="database_stuff.Location" fetch="select">
+            <column name="location_fk" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" />
+        </property>
+        <property name="datetimeStart" type="timestamp">
+            <column name="datetime_start" length="19" />
+        </property>
+        <property name="datetimeEnd" type="timestamp">
+            <column name="datetime_end" length="19" />
+        </property>
+        <property name="ticketsPerUser" type="java.lang.Integer">
+            <column name="tickets_per_user" />
+        </property>
+        <property name="views" type="java.lang.Long">
+            <column name="views" />
+        </property>
+        <set name="feedbacks" table="feedback" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="festival_fk" />
+            </key>
+            <one-to-many class="database_stuff.Feedback" />
+        </set>
+        <set name="socialnetworks" table="socialnetwork" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="festival_fk" />
+            </key>
+            <one-to-many class="database_stuff.Socialnetwork" />
+        </set>
+        <set name="festivaldays" table="festivalday" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="festival_fk" />
+            </key>
+            <one-to-many class="database_stuff.Festivalday" />
+        </set>
+        <set name="festivalmedias" table="festivalmedia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="festival_fk" />
+            </key>
+            <one-to-many class="database_stuff.Festivalmedia" />
+        </set>
+    </class>
+</hibernate-mapping>

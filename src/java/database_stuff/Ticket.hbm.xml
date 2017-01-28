@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 28, 2017 8:06:00 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="database_stuff.Ticket" table="ticket" catalog="pia" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="type" class="database_stuff.Type" fetch="select">
+            <column name="type_fk" />
+        </many-to-one>
+        <property name="volume" type="java.lang.Integer">
+            <column name="volume" />
+        </property>
+        <property name="price" type="java.lang.Long">
+            <column name="price" precision="10" scale="0" />
+        </property>
+        <set name="ticketFestivaldays" table="ticket_festivalday" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ticket_fk" />
+            </key>
+            <one-to-many class="database_stuff.TicketFestivalday" />
+        </set>
+        <set name="ticketreservations" table="ticketreservation" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ticket_fk" />
+            </key>
+            <one-to-many class="database_stuff.Ticketreservation" />
+        </set>
+    </class>
+</hibernate-mapping>

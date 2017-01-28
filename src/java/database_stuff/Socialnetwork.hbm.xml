@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 28, 2017 8:06:00 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="database_stuff.Socialnetwork" table="socialnetwork" catalog="pia" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="festival" class="database_stuff.Festival" fetch="select">
+            <column name="festival_fk" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" />
+        </property>
+        <property name="link" type="string">
+            <column name="link" />
+        </property>
+    </class>
+</hibernate-mapping>
