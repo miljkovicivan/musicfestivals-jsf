@@ -2,13 +2,29 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
 	<ui:composition>
-	    <h1>HEADER</h1>
+	    <div class="row" style="background-color: yellowgreen; height: 80px;">
+		<div class="col-md-10"></div>
+		<div class='col-md-2' style="margin-top: 30px">
+		    <c:if test="#{userControler.logedIn}">
+			<p:link value="LogOut" outcome="#{userControler.logout()}"/>
+		    </c:if>
+		    <c:if test="#{!userControler.logedIn}">
+			<p>
+			    <p:link value="LogIn" outcome="login"/> /
+			    <p:link value="Register" outcome="register"/>
+			</p>
+		    </c:if>
+		</div>
+	    </div>
+	    
 	</ui:composition>
     </h:body>
 </html>
