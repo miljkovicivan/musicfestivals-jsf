@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package database_stuff.helpers;
+package database_stuff.managers;
 
 import database_stuff.HibernateUtil;
 import database_stuff.User;
@@ -78,20 +78,26 @@ public class UserManager {
 	}
 	
 	public void update(User user) {
-		Session session = factory.openSession();
-		session.beginTransaction();
-		session.update(user);
-		session.getTransaction().commit();
-		session.close();
-
+		try{
+			Session session = factory.openSession();
+			session.beginTransaction();
+			session.update(user);
+			session.getTransaction().commit();
+			session.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void save(User user) {
-		Session session = factory.openSession();
-		session.beginTransaction();
-		session.save(user);
-		session.getTransaction().commit();
-		session.close();
+		try{
+			Session session = factory.openSession();
+			session.beginTransaction();
+			session.save(user);
+			session.getTransaction().commit();
+			session.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
-	
 }

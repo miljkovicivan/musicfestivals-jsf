@@ -6,7 +6,7 @@
 package controlers;
 
 import database_stuff.User;
-import database_stuff.helpers.UserManager;
+import database_stuff.managers.UserManager;
 import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
