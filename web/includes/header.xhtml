@@ -10,11 +10,16 @@
     </h:head>
     <h:body>
 	<ui:composition>
-	    <div class="row" style="background-color: yellowgreen; height: 80px;">
-		<div class="col-md-10"></div>
+	    <div class="row" style="background-color: #E1EDFF; height: 80px;">
+		<div class="col-md-3">
+		    <div style="margin-top:30px; text-align: right;">
+			<p style="text-height: max-size">Music Festivals</p>
+		    </div>
+		</div>
+		<div class="col-md-7"></div>
 		<div class='col-md-2' style="margin-top: 30px">
 		    <c:if test="#{userControler.logedIn}">
-			<p:link value="LogOut" outcome="#{userControler.logout()}"/>
+			<p:link value="LogOut" style="color:#b92c28" outcome="#{userControler.logout()}"/>
 		    </c:if>
 		    <c:if test="#{!userControler.logedIn}">
 			<p>
